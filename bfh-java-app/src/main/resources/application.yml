@@ -1,0 +1,23 @@
+bfh:
+  name: "Meenakshi Gupta"
+  regNo: "22BEE1101"      # Use your real reg no here
+  email: "meenkashi.gupta2022@vitstudent.ac.in"
+  # Put your final SQL query here after solving the Google Drive question (odd/even mapping)
+  finalQuery: "SELECT 
+    p.AMOUNT AS SALARY,
+    CONCAT(e.FIRST_NAME, ' ', e.LAST_NAME) AS NAME,
+    TIMESTAMPDIFF(YEAR, e.DOB, CURDATE()) AS AGE,
+    d.DEPARTMENT_NAME
+FROM PAYMENTS p
+JOIN EMPLOYEE e ON p.EMP_ID = e.EMP_ID
+JOIN DEPARTMENT d ON e.DEPARTMENT = d.DEPARTMENT_ID
+WHERE DAY(p.PAYMENT_TIME) <> 1
+ORDER BY p.AMOUNT DESC
+LIMIT 1;"
+  
+# Logging to see what's happening
+logging:
+  level:
+    root: INFO
+    com.example.bfh: DEBUG
+
